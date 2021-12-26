@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+	
+	</title>
+	<style type="text/css">
+		.c1{
+			background-color: aquamarine;
+			
+		}
+		.c2{
+			background-color: pink;
+			color: #542342;
+		}
+		.ClassStyle{
+			width: 500px;
+			background-color: skyblue;
+			margin: 0 auto;
+			text-align: center;
+			color: #246575;
+			border: 5px brown solid;
+		}
+		.c4{
+			width: 480px;
+			font-size: 30px;
+		}
+		.c6{
+			width: 460px;
+			font-size: 20px;
+			background-color: grey;
+			transition: 0.5s;
+
+		}
+		.c5{
+			width: 480px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			
+		}
+		.c6:hover{
+			background-color: burlywood;
+		}
+
+	</style>
+	
+</head>
+<body>
+	<div class="ClassStyle">
+		<h1>guess number</h1>
+			<form action="#"><input type="text" id="input" name="guess" class="c4">
+				<input type="button"id="guess" value="guess!" name="go" onclick="compare()" class="c6">
+				<p><span id = "temp"></span></p>
+			</form>
+			<div id="result" class="c5"><div class="c1">Result</div> </div>
+	</div>
+	<script type="text/javascript">
+		var rand = Math.floor((Math.random()*100)+1);
+		var max = 100;
+		var min = 1;
+		var i = 1;
+
+		function compare() {
+			var input = document.getElementById('input').value;
+			input = parseInt(input);
+			if (rand == input ) {
+				alert('right');
+				location.reload(true);
+			}else if (input<rand && input>min){
+				min = input;
+				i++;
+				output();
+				document.getElementById('input').value = '';
+			}else if(input>rand && input<max){
+				max = input;
+				i++;
+				output();
+				document.getElementById('input').value = '';
+			}else{
+				i++;
+				output();
+				document.getElementById('input').value = '';
+			}
+		}
+		function output(){
+			var newLine = document.createElement('div');
+			var textNode = document.createTextNode(min+'-'+max);
+			newLine.appendChild(textNode);
+			if(i%2 == 1){
+				newLine.setAttribute('class','c1');
+
+			}else{
+				newLine.setAttribute('class','c2');
+			}
+			document.getElementById('result').appendChild(newLine);
+		}
+	</script>
+
+</body>
+</html>
